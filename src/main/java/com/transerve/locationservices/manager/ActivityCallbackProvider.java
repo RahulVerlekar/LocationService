@@ -1,13 +1,18 @@
 package com.transerve.locationservices.manager;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import androidx.annotation.StringRes;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.common.util.SharedPreferencesUtils;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.SettingsClient;
@@ -56,5 +61,25 @@ public class ActivityCallbackProvider {
 
     public boolean isAttached() {
         return true;
+    }
+
+    public Object getSystemService(String serviceName) {
+        return activity.getSystemService(serviceName);
+    }
+
+    public String getString(@StringRes int resId) {
+        return activity.getString(resId);
+    }
+
+    public SharedPreferences getPrefs() {
+        return activity.getPreferences(Context.MODE_PRIVATE);
+    }
+
+    public int getRotation() {
+        return 0;
+    }
+
+    public void saveInt(String key, int data) {
+        /// TODO: 3/6/19
     }
 }
